@@ -32,6 +32,22 @@ namespace Lista_Doblemente_Enlazada
             Console.WriteLine();
             lista.MezclarFin(lista2);
             lista.Imprime();
+
+            Console.WriteLine();
+            Console.Write(lista.Get(0));
+            Console.WriteLine();
+            bool encontrado1 = lista.Buscar(80);
+            if (encontrado1)
+                Console.Write("El valor existe.");
+            else
+                Console.Write("El valor no existe.");
+            Console.WriteLine();
+            bool encontrado2 = lista.Buscar(100);
+            if (encontrado2)
+                Console.Write("El valor existe.");
+            else
+                Console.Write("El valor no existe.");
+
         }
     }
 }

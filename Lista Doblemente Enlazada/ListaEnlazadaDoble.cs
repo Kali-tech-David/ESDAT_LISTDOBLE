@@ -71,12 +71,42 @@ namespace Lista_Doblemente_Enlazada
         {
             int cont = 0;
             Nodo actual = primero;
-            do
+            
+            while(actual != null)
             {
                 cont++;
                 actual = actual.Siguiente;
-            } while (actual != null);
+            }
+
             return cont;
+        }
+
+        public int Get(int idx)
+        {
+            int Count = Length();
+            if(idx < 0 || idx >= Count)
+            {
+                return int.MinValue;
+            }
+            Nodo actual;
+
+            if(idx < Count / 2)
+            {
+                actual = primero;
+                for(int i = 0; i < idx; i++)
+                {
+                    actual = actual.Siguiente;
+                }
+            }
+            else
+            {
+                actual = ultimo;
+                for(int i = Count - 1; i > idx; i--)
+                {
+                    actual = actual.Anterior;
+                }
+            }
+            return actual.Dato;
         }
 
         public void MezclarFin(ListaEnlazadaDoble lista)
@@ -94,6 +124,20 @@ namespace Lista_Doblemente_Enlazada
                 ultimo.Siguiente = lista.primero;
                 ultimo = lista.ultimo;
             } 
+        }
+
+        public bool Buscar(int valor)
+        {
+            Nodo actual = ultimo;
+            while(actual != null)
+            {
+                if(actual.Dato == valor)
+                {
+                    return true;
+                }
+                actual = actual.Anterior;
+            }
+            return false;
         }
     }
 }
