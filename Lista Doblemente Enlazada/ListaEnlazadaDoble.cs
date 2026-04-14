@@ -139,5 +139,42 @@ namespace Lista_Doblemente_Enlazada
             }
             return false;
         }
+
+        public void Eliminar(int valor)
+        {
+            if (primero == null) return;
+
+            Nodo actual = primero;
+
+            while (actual != null && actual.Dato != valor)
+            {
+                actual = actual.Siguiente;
+            }
+
+            if (actual == null) return;
+
+            if (actual == primero && actual == ultimo)
+            {
+                primero = null;
+                ultimo = null;
+            }
+            else if (actual == primero)
+            {
+                primero = primero.Siguiente;
+                primero.Anterior = null;
+            }
+            else if (actual == ultimo)
+            {
+                ultimo = ultimo.Anterior;
+                ultimo.Siguiente = null;
+            }
+            else
+            {
+                actual.Anterior.Siguiente = actual.Siguiente;
+                actual.Siguiente.Anterior = actual.Anterior;
+            }
+            actual.Siguiente = null;
+            actual.Anterior = null;
+        }
     }
 }
